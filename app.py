@@ -1,5 +1,5 @@
 from flask import Flask, request
-
+import requests as rq
 # 載入 json 標準函式庫，處理回傳的資料格式
 import json
 
@@ -8,6 +8,8 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import dotenv
+import datetime as dt
+
 
 dotenv.load_dotenv()
 
