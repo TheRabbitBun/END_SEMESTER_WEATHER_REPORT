@@ -57,6 +57,7 @@ def weather(address):
             data = req.json()
             station = data['records']['Station']   # 觀測站
             for i in station:
+                data2 = data["main"]
                 city = i['GeoInfo']['CountyName']  # 縣市
                 area = i['GeoInfo']['TownName']    # 區域
                 # 使用「縣市+區域」作為 key，例如「高雄市前鎮區」就是 key
