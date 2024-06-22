@@ -101,12 +101,12 @@ def linebot():
                 img_url = f'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png?{time.time_ns()}'
                 img_message = ImageSendMessage(original_content_url=img_url, preview_image_url=img_url)
                 line_bot_api.reply_message(reply_token,img_message)
-            elif text == '地震':
-                line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
-                reply = earth_quake()
-                text_message = TextSendMessage(text=reply[0])
-                line_bot_api.reply_message(reply_token,text_message)
-                line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=reply[1], preview_image_url=reply[1]))
+            # elif text == '地震':
+            #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
+            #     reply = earth_quake()
+            #     text_message = TextSendMessage(text=reply[0])
+            #     line_bot_api.reply_message(reply_token,text_message)
+            #     line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=reply[1], preview_image_url=reply[1]))
             else:          
                 text_message = TextSendMessage(text=text)
                 line_bot_api.reply_message(reply_token,text_message)
