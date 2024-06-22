@@ -14,7 +14,12 @@ name_in_zh = place["local_names"]["zh"]
 query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
 res = requests.get(query)
 data = res.json()
-data_prior = data["main"]
-print(data_prior)
+data2 = data["main"]
+weather = data["weather"][0]
+min_temp = data2["temp_min"]
+high_temp = data2["temp_max"]
+feels_like = data2["feels_like"]
+weather_sta = weather["main"]
+print(weather_sta)
 
 #print(a(Test))
