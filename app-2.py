@@ -23,6 +23,6 @@ feels_like = round(data2["feels_like"])
 humidity = data2["humidity"]
 weather_sta = weather["main"]
 print(data)
-print("\n" + name_in_zh)
+print(name_in_zh)
 
 #print(a(Test))
