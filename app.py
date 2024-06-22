@@ -42,10 +42,12 @@ def weather(address):
     try:
         API_KEY = 'e8fef5845478923a029a170937d3e487'
         city_query = address
-        geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=3&appid={API_KEY}'
-        geo_json = geo_arr.json()
-        lat = geo_arr["lat"]
-        lon = geo_arr["lon"]
+        geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=1&appid={API_KEY}'
+        geo_res = requests.get(geo_arr)
+        geo_loc_dt = geo_res.json()
+        place = geo_loc_dt[0]
+        lat = place["lat"]
+        lon = place["lon"]
         query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
         #url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
         #    f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
