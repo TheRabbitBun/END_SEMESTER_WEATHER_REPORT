@@ -8,8 +8,8 @@ geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit
 geo_res = requests.get(geo_arr)
 geo_loc_dt = geo_res.json()
 place = geo_loc_dt[0]
-lat = geo_loc_dt[0]["lat"]
-lon = geo_loc_dt[0]["lon"]
+lat = place["lat"]
+lon = place["lon"]
 name_in_zh = place["local_names"]["zh"]
 query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
 res = requests.get(query)
