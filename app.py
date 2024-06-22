@@ -43,7 +43,9 @@ def weather(address):
         API_KEY = '你的氣象 token'
         city_query = address + ",TW"
         geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=3&appid={API_KEY}'
-        
+        geo_json = geo_arr.json()
+        lat = geo_arr["lat"]
+        lon = geo_arr["lon"]
         #url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
         #    f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
         result = {}
