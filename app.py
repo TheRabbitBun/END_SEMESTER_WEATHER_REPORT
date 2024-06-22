@@ -9,9 +9,9 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, StickerSe
 app = Flask(__name__)
 
 # Colab 環境需要下面這三行，本機環境不需要
-port = "5000"
-public_url = ngrok.connect(port).public_url
-print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\" ")
+# port = "5000"
+# public_url = ngrok.connect(port).public_url
+# print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\" ")
 
 # def earth_quake():
 #     result = []
@@ -40,9 +40,12 @@ print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\" ")
 
 def weather(address):
     try:
-        code = '你的氣象 token'
-        url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
-            f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
+        API_KEY = '你的氣象 token'
+        city_query = address + ",TW"
+        geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=3&appid={API_KEY}'
+        
+        #url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
+        #    f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
         result = {}
         for item in url:
             req = requests.get(item)   # 爬取目前天氣網址的資料
