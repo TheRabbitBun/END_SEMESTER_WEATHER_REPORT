@@ -46,11 +46,11 @@ def weather(address):
         geo_json = geo_arr.json()
         lat = geo_arr["lat"]
         lon = geo_arr["lon"]
-        query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}'
+        query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
         #url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
         #    f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
         result = {}
-        for item in url:
+        for item in query:
             req = requests.get(item)   # 爬取目前天氣網址的資料
             data = req.json()
             station = data['records']['Station']   # 觀測站
