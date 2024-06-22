@@ -9,9 +9,9 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, StickerSe
 app = Flask(__name__)
 
 # Colab 環境需要下面這三行，本機環境不需要
-port = "5000"
-public_url = ngrok.connect(port).public_url
-print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\" ")
+# port = "5000"
+# public_url = ngrok.connect(port).public_url
+# print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\" ")
 
 # def earth_quake():
 #     result = []
