@@ -40,8 +40,8 @@ app = Flask(__name__)
 
 def weather(address):
     try:
-        API_KEY = '你的氣象 token'
-        city_query = address + ",TW"
+        API_KEY = 'e8fef5845478923a029a170937d3e487'
+        city_query = address
         geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=3&appid={API_KEY}'
         geo_json = geo_arr.json()
         lat = geo_arr["lat"]
