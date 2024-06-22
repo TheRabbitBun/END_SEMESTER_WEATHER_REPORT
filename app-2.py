@@ -1,7 +1,7 @@
 from flask import Flask, request
 import json, time, requests, math
 app = Flask(__name__)
-Test = "Ruisui"
+Test = input("Enter a City:\n")
 API_KEY = 'e8fef5845478923a029a170937d3e487'
 city_query = Test 
 geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=1&appid={API_KEY}'
@@ -16,10 +16,13 @@ res = requests.get(query)
 data = res.json()
 data2 = data["main"]
 weather = data["weather"][0]
-min_temp = data2["temp_min"]
-high_temp = data2["temp_max"]
-feels_like = data2["feels_like"]
+temp = round(data2["temp"])
+min_temp = round(data2["temp_min"])
+high_temp = round(data2["temp_max"])
+feels_like = round(data2["feels_like"])
+humidity = data2["humidity"]
 weather_sta = weather["main"]
-print(weather_sta)
+print(data)
+print("\n" + name_in_zh)
 
 #print(a(Test))
