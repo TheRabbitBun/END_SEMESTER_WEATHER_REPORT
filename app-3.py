@@ -108,7 +108,7 @@ def linebot():
         print(json_data)                                      # 印出內容
         type = json_data['events'][0]['message']['type']
         # if type == 'text':
-        #     text = json_data['events'][0]['message']['text']
+        text = json_data['events'][0]['message']['text']
         #     # if text == '雷達回波圖' or text == '雷達回波':
         #     #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
         #     #     img_url = f'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png?{time.time_ns()}'
@@ -121,8 +121,8 @@ def linebot():
         #     #     line_bot_api.reply_message(reply_token,text_message)
         #     #     line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=reply[1], preview_image_url=reply[1]))
         #     # else:          
-        #     text_message = TextSendMessage(text=text)
-        #     line_bot_api.reply_message(reply_token,text_message)
+        text_message = TextSendMessage(text=text)
+        line_bot_api.reply_message(reply_token,text_message)
         # elif type == 'location':
         line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
         address = json_data['events'][0]['message']['address']  # 取出地址資訊，並將「台」換成「臺」
