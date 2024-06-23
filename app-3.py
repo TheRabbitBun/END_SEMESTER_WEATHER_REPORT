@@ -91,8 +91,8 @@ def weather(address):
 # Test = input("Enter a City\n")
 # Test1 = weather(Test)
 # print(Test1)
-access_token = '你的 Access Token'
-channel_secret = '你的 Channel Secret'
+access_token = '2005447430'
+channel_secret = '89f6f760b212edecf0230d32b98ecb52'
 
 @app.route("/", methods=['POST'])
 def linebot():
