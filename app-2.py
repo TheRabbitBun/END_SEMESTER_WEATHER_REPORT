@@ -22,7 +22,9 @@ high_temp = round(data2["temp_max"])
 feels_like = round(data2["feels_like"])
 humidity = data2["humidity"]
 weather_sta = weather["main"]
-print(data)
-print(name_in_zh)
+# print(geo_loc_dt)
+# print(data)
+# print(name_in_zh)
+print(f'The Temp of {Test} is {temp} and feels like {feels_like} The Humidity is {humidity}')
 
 #print(a(Test))
