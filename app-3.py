@@ -39,7 +39,7 @@ app = Flask(__name__)
 #     return result
 
 def weather(address):
-    # try:
+     #try:
         API_KEY = 'e8fef5845478923a029a170937d3e487'
         city_query = address
         geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=1&appid={API_KEY}'
@@ -78,12 +78,12 @@ def weather(address):
             return result
             
 
-        # output = '找不到氣象資訊'
-        # for i in result:
-        #     if i in address: # 如果地址裡存在 key 的名稱
-        #         output = f'「{address}」{result[i]}'
-        #         print(output)
-    #             break
+        output = '找不到氣象資訊'
+        for i in result:
+            if i in address: # 如果地址裡存在 key 的名稱
+                output = f'「{address}」{result[i]}'
+                print(output)
+                break
     # except Exception as e:
     #     print(e)
     #     output = '抓取失敗...'
