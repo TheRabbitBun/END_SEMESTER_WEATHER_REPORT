@@ -11,7 +11,7 @@ place = geo_loc_dt[0]
 lat = place["lat"]
 lon = place["lon"]
 name_in_zh = place["local_names"]["zh"]
-query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
+query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh_tw'
 res = requests.get(query)
 data = res.json()
 data2 = data["main"]

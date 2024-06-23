@@ -48,7 +48,8 @@ def weather(address):
         place = geo_loc_dt[0]
         lat = place["lat"]
         lon = place["lon"]
-        query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh'
+        name_in_zh = place["local_names"]["zh"]
+        query = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}&lang=zh_tw'
         #url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}',
         #    f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}']
         result = {}
