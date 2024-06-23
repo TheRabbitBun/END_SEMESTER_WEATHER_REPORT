@@ -45,6 +45,8 @@ def weather(address):
         geo_arr = f'http://api.openweathermap.org/geo/1.0/direct?q={city_query},TW&limit=1&appid={API_KEY}'
         geo_res = requests.get(geo_arr)
         geo_loc_dt = geo_res.json()
+        if not geo_loc_dt:
+              return "Location Not Found"
         place = geo_loc_dt[0]
         lat = place["lat"]
         lon = place["lon"]
@@ -72,20 +74,22 @@ def weather(address):
             feels_like = data2["feels_like"]
             # 回傳結果
             result[f'{city} {country}'] = f'目前天氣狀況「{weather_desc}」，溫度 {temp} 度，相對濕度 {humid}% 體感溫度 {feels_like}！'
+            print(result)
             
 
-        output = '找不到氣象資訊'
-        for i in result:
-            if i in address: # 如果地址裡存在 key 的名稱
-                output = f'「{address}」{result[i]}'
-                print(output)
+        # output = '找不到氣象資訊'
+        # for i in result:
+        #     if i in address: # 如果地址裡存在 key 的名稱
+        #         output = f'「{address}」{result[i]}'
+        #         print(output)
     #             break
     # except Exception as e:
     #     print(e)
     #     output = '抓取失敗...'
     # return output
 Test = input("Enter a City\n")
-print(weather(Test))
+Test1 = weather(Test)
+print(Test1 )
 # access_token = '你的 Access Token'
 # channel_secret = '你的 Channel Secret'
 
