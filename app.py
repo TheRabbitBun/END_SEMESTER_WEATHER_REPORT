@@ -55,6 +55,8 @@ def weather(address):
         for item in query:
             req = requests.get(item)   # 爬取目前天氣網址的資料
             data = req.json()
+            data2 = data["main"]
+            data_weather = data["weather"][0]
             station = data['records']['Station']   # 觀測站
             for i in station:
                 data2 = data["main"]
