@@ -88,50 +88,50 @@ def weather(address):
     #     print(e)
     #     output = '抓取失敗...'
     # return output
-# Test = input("Enter a City\n")
-# Test1 = weather(Test)
-# print(Test1)
+Test = input("Enter a City\n")
+Test1 = weather(Test)
+print(Test1)
 access_token = 'u27c8bBzR0etN32R3Q1dLwil+B3Gx88SlcTHsAlXdRkZYqIBsz58kqa8G5kDvbmdRPhgGyPU9/L3vOtZYRIbBYhFw2rnACfn3YelJXx5BMqVmc625hHsZGBW3jKGsn2sMcg5c0m9vz3b9o/B/VqPMQdB04t89/1O/w1cDnyilFU='
 channel_secret = '89f6f760b212edecf0230d32b98ecb52'
 
-@app.route("/", methods=['POST'])
-def linebot():
-    body = request.get_data(as_text=True)                    # 取得收到的訊息內容
-    try:
-        line_bot_api = LineBotApi(access_token)     # 確認 token 是否正確
-        handler = WebhookHandler(channel_secret)    # 確認 secret 是否正確
-        signature = request.headers['X-Line-Signature']             # 加入回傳的 headers
-        handler.handle(body, signature)      # 綁定訊息回傳的相關資訊
-        json_data = json.loads(body)         # 轉換內容為 json 格式
-        reply_token = json_data['events'][0]['replyToken']    # 取得回傳訊息的 Token ( reply message 使用 )
-        user_id = json_data['events'][0]['source']['userId']  # 取得使用者 ID ( push message 使用 )
-        print(json_data)                                      # 印出內容
-        type = json_data['events'][0]['message']['type']
-        # if type == 'text':
-        text = json_data['events'][0]['message']['text']
-        #     # if text == '雷達回波圖' or text == '雷達回波':
-        #     #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
-        #     #     img_url = f'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png?{time.time_ns()}'
-        #     #     img_message = ImageSendMessage(original_content_url=img_url, preview_image_url=img_url)
-        #     #     line_bot_api.reply_message(reply_token,img_message)
-        #     # elif text == '地震':
-        #     #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
-        #     #     reply = earth_quake()
-        #     #     text_message = TextSendMessage(text=reply[0])
-        #     #     line_bot_api.reply_message(reply_token,text_message)
-        #     #     line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=reply[1], preview_image_url=reply[1]))
-        #     # else:          
-        text_message = TextSendMessage(text=text)
-        line_bot_api.reply_message(reply_token,text_message)
-        # elif type == 'location':
-        line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
-        address = json_data['events'][0]['message']['address']  # 取出地址資訊，並將「台」換成「臺」
-        reply = weather(address)          
-        text_message = TextSendMessage(text=reply)
-        line_bot_api.reply_message(reply_token,text_message)
-    except Exception as e:
-        print(e)
-    return 'OK'                 # 驗證 Webhook 使用，不能省略
+# @app.route("/", methods=['POST'])
+# def linebot():
+#     body = request.get_data(as_text=True)                    # 取得收到的訊息內容
+#     try:
+#         line_bot_api = LineBotApi(access_token)     # 確認 token 是否正確
+#         handler = WebhookHandler(channel_secret)    # 確認 secret 是否正確
+#         signature = request.headers['X-Line-Signature']             # 加入回傳的 headers
+#         handler.handle(body, signature)      # 綁定訊息回傳的相關資訊
+#         json_data = json.loads(body)         # 轉換內容為 json 格式
+#         reply_token = json_data['events'][0]['replyToken']    # 取得回傳訊息的 Token ( reply message 使用 )
+#         user_id = json_data['events'][0]['source']['userId']  # 取得使用者 ID ( push message 使用 )
+#         print(json_data)                                      # 印出內容
+#         type = json_data['events'][0]['message']['type']
+#         # if type == 'text':
+#         text = json_data['events'][0]['message']['text']
+#         #     # if text == '雷達回波圖' or text == '雷達回波':
+#         #     #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
+#         #     #     img_url = f'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png?{time.time_ns()}'
+#         #     #     img_message = ImageSendMessage(original_content_url=img_url, preview_image_url=img_url)
+#         #     #     line_bot_api.reply_message(reply_token,img_message)
+#         #     # elif text == '地震':
+#         #     #     line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
+#         #     #     reply = earth_quake()
+#         #     #     text_message = TextSendMessage(text=reply[0])
+#         #     #     line_bot_api.reply_message(reply_token,text_message)
+#         #     #     line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=reply[1], preview_image_url=reply[1]))
+#         #     # else:          
+#         text_message = TextSendMessage(text=text)
+#         line_bot_api.reply_message(reply_token,text_message)
+#         # elif type == 'location':
+#         line_bot_api.push_message(user_id, TextSendMessage(text='馬上找給你！抓取資料中....'))
+#         address = json_data['events'][0]['message']['address']  # 取出地址資訊，並將「台」換成「臺」
+#         reply = weather(address)          
+#         text_message = TextSendMessage(text=reply)
+#         line_bot_api.reply_message(reply_token,text_message)
+#     except Exception as e:
+#         print(e)
+#     return 'OK'                 # 驗證 Webhook 使用，不能省略
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
